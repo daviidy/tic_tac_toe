@@ -1,27 +1,29 @@
-require "./lib/player.rb"
-require "./lib/evaluatable.rb"
+# frozen_string_literal: true
 
+require './lib/player.rb'
+require './lib/evaluatable.rb'
 
 class Board
-  include Evaluatable, Movable
+  include Movable
+  include Evaluatable
 
   def initialize
     @player = Player.new
     @board = [
-      ["_", "_", "_"],
-      ["_", "_", "_"],
-      ["_", "_", "_"]
+      %w[_ _ _],
+      %w[_ _ _],
+      %w[_ _ _]
     ]
     @converter = {
-      1 => [2,0],
-      2 => [2,1],
-      3 => [2,2],
-      4 => [1,0],
-      5 => [1,1],
-      6 => [1,2],
-      7 => [0,0],
-      8 => [0,1],
-      9 => [0,2]
+      1 => [2, 0],
+      2 => [2, 1],
+      3 => [2, 2],
+      4 => [1, 0],
+      5 => [1, 1],
+      6 => [1, 2],
+      7 => [0, 0],
+      8 => [0, 1],
+      9 => [0, 2]
     }
   end
 
@@ -36,30 +38,30 @@ class Board
   end
 
   def play
-    result = ""
+    result = ''
     puts "\n\nTIC TAC TIE"
     display
     done = false
     until done
       puts "\nInsert Position"
       number = gets.chomp.to_i
-      board[converter[number][0]][converter[number][1]] = "x"
+      board[converter[number][0]][converter[number][1]] = 'x'
       player_move = player.find_best_move(board)
-      board[player_move[:row]][player_move[:col]] = "o"
+      board[player_move[:row]][player_move[:col]] = 'o'
       display
       evaluated = evaluate(board)
       move = has_move?(board)
       if evaluated == 10
         done = true
-        result = "O win"
+        result = 'O win'
       end
       if evaluated == -10
         done = true
-        result = "X win"
+        result = 'X win'
       end
       if evaluated == 0 && !move
         done = true
-        result = "draw"
+        result = 'draw'
       end
     end
     puts result
