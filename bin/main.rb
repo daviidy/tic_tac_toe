@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 # rubocop:disable all
 # our game will have 3 classes
 # the game itself
