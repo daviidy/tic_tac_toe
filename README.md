@@ -1,4 +1,4 @@
-# enumerables-project
+# Tic Tac Toe
 This project is the third one in Ruby module at Microverse. In this project, we built a Tic Tac Toe game
 
 
