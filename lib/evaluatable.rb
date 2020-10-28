@@ -6,7 +6,7 @@ module Evaluatable
   # - if thery are not equal, return false
 
   def are_equal?(the_a, the_b, the_c, player, opponent)
-    the_a == the_b && the_b == th_c && the_c == the_b && (the_a == player || the_a == opponent)
+    the_a == the_b && the_b == the_c && the_c == the_b && (the_a == player || the_a == opponent)
   end
 
   def player?(board_cell, player, opponent)
@@ -29,7 +29,7 @@ module Evaluatable
     3.times do |row|
       if are_equal?(board[row][0], board[row][1], board[row][2], player, opponent)
 
-        return is_player?(board[row][0], player, opponent)
+        return player?(board[row][0], player, opponent)
 
       end
     end
@@ -39,26 +39,18 @@ module Evaluatable
     3.times do |col|
       if are_equal?(board[0][col], board[1][col], board[2][col], player, opponent)
 
-        return is_player?(board[0][col], player, opponent)
+        return player?(board[0][col], player, opponent)
 
       end
     end
 
     # Checking frist diagonal for victory
 
-    if are_equal?(board[0][0], board[1][1], board[2][2], player, opponent)
-
-      return is_player?(board[0][0], player, opponent)
-
-    end
+    return player?(board[0][0], player, opponent) if are_equal?(board[0][0], board[1][1], board[2][2], player, opponent)
 
     # Checking second diagonal for victory
 
-    if are_equal?(board[0][2], board[1][1], board[2][0], player, opponent)
-
-      return is_player?(board[0][2], player, opponent)
-
-    end
+    return player?(board[0][2], player, opponent) if are_equal?(board[0][2], board[1][1], board[2][0], player, opponent)
 
     # If none of them have won
 

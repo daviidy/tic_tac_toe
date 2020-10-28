@@ -68,64 +68,26 @@ class Board
 
     until done
 
-      puts "\n X Turn"
+      puts "\nInsert Position"
 
       number = gets.chomp.to_i
 
-      if board[converter[number][0]][converter[number][1]] == 'o' ||
-         board[converter[number][0]][converter[number][1]] == 'x'
-
-        puts 'This Position is Occupied Choice another one'
-        number = gets.chomp.to_i
-      end
-
       board[converter[number][0]][converter[number][1]] = 'x'
-      evaluated = evaluate(board)
+
+      player_move = { row: rand(2), col: rand(2) }
+
+      board[player_move[:row]][player_move[:col]] = 'o'
 
       display
 
       evaluated = evaluate(board)
 
-      move = move?(board)
+      move = has_move?(board)
 
       if evaluated == 10
 
         done = true
-        result = 'O win'
-        break
 
-      end
-
-      if evaluated == -10
-
-        done = true
-
-        result = 'X win'
-        break
-      end
-
-      puts "\n O Turn"
-
-      number_two = gets.chomp.to_i
-
-      if board[converter[number][0]][converter[number][1]] == 'o' ||
-         board[converter[number][0]][converter[number][1]] == 'x'
-
-        puts 'This Position is Occupied Choice another one'
-        number_two = gets.chomp.to_i
-      end
-
-      board[converter[number_two][0]][converter[number_two][1]] = 'o'
-
-      display
-
-      evaluated = evaluate(board)
-
-      move = move?(board)
-
-      if evaluated == 10
-
-        done = true
         result = 'O win'
 
       end
