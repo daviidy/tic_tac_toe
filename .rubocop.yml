@@ -16,9 +16,9 @@ Metrics/ClassLength:
 Naming/MethodParameterName:
   MinNameLength: 1
 Metrics/CyclomaticComplexity:
-  IgnoredMethods: ["play", "minimax "]
+  IgnoredMethods: ["play", "minimax"]
 Metrics/PerceivedComplexity:
- IgnoredMethods: ["play", "minimax "]
+ IgnoredMethods: ["play", "minimax"]
 Metrics/BlockLength:
   ExcludedMethods: ['describe']
   Max: 30
