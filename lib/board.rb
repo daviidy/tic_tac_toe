@@ -1,6 +1,7 @@
 require './lib/movable.rb'
 
 require './lib/evaluatable.rb'
+require './lib/player.rb'
 
 class Board
   include Movable
@@ -8,6 +9,7 @@ class Board
   include Evaluatable
 
   def initialize
+    @player = Player.new
     @board = [
 
       %w[_ _ _],
@@ -68,7 +70,7 @@ class Board
 
     until done
 
-      puts "\n X Turn"
+      puts "\nInsert Position"
 
       number = gets.chomp.to_i
 
@@ -80,7 +82,10 @@ class Board
       end
 
       board[converter[number][0]][converter[number][1]] = 'x'
-      evaluated = evaluate(board)
+
+      player_move = player.find_best_move(board)
+
+      board[player_move[:row]][player_move[:col]] = 'o'
 
       display
 
@@ -91,41 +96,7 @@ class Board
       if evaluated == 10
 
         done = true
-        result = 'O win'
-        break
 
-      end
-
-      if evaluated == -10
-
-        done = true
-
-        result = 'X win'
-        break
-      end
-
-      puts "\n O Turn"
-
-      number_two = gets.chomp.to_i
-
-      if board[converter[number][0]][converter[number][1]] == 'o' ||
-         board[converter[number][0]][converter[number][1]] == 'x'
-
-        puts 'This Position is Occupied Choice another one'
-        number_two = gets.chomp.to_i
-      end
-
-      board[converter[number_two][0]][converter[number_two][1]] = 'o'
-
-      display
-
-      evaluated = evaluate(board)
-
-      move = move?(board)
-
-      if evaluated == 10
-
-        done = true
         result = 'O win'
 
       end
