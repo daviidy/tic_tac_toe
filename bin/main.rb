@@ -1,2 +1,4 @@
-#!/usr/bin/env ruby
-puts 'Hello World!'
+require './lib/board.rb'
+
+board = Board.new
+board.play
