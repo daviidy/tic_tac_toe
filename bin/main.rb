@@ -17,25 +17,19 @@ class Main
     @converter = @board.converter
   end
 
-  attr_accessor :game
-
-  attr_accessor :board
-
-  attr_reader :player, :converter
-
   def play
 
     puts "#{@player.name} what's your name?"
 
     @player.name = gets.chomp
 
-    puts "#{@player.name} your piece is(#{@player.player})!"
+    puts "#{@player.name} your piece is(#{@player.opponent})!"
 
     result = ''
 
     puts "\n\nTIC TAC TOE"
 
-    puts board.display
+    puts @board.display
 
     done = false
 
@@ -52,18 +46,25 @@ class Main
         number = gets.chomp.to_i
       end
 
-      if board.is_occupied(converter, number) == false
-        puts 'This Position is Occupied Choice another one'
-        number = gets.chomp.to_i
-      else
-        board.add_piece(converter, number)
+      loop do
+        if @board.is_occupied(@board.converter, number) == false
+          puts 'This Position is occupied! Please choose another one'
+          number = gets.chomp.to_i
+          while number < 1 || number > 9
+            puts 'Invalid entry please try between 1-9'
+            number = gets.chomp.to_i
+          end
+        else
+          @board.add_piece(@board.converter, number)
+          break
+        end
       end
 
-      puts board.display
+      puts @board.display
 
-      evaluated = evaluate(game)
+      evaluated = evaluate(@board.board)
 
-      move = move?(game)
+      move = move?(@board.board)
 
       if evaluated == 10
 
