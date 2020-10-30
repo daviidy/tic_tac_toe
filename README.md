@@ -75,8 +75,7 @@ Here are all the positions
 
 - Github: [@daviidy](https://github.com/daviidy )
 - Twitter: [@DavidYao3](https://twitter.com/DavidYao3)
-- Linkedin: [@DavidYao](https://www.linkedin.com/in/david-yao-6bb95299/
-daviidy )
+- Linkedin: [@DavidYao](https://www.linkedin.com/in/david-yao-6bb95299/daviidy )
 
 
 ## Show your support
