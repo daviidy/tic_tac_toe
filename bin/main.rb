@@ -24,6 +24,13 @@ class Main
   attr_reader :player, :converter
 
   def play
+
+    puts "#{@player.name} what's your name?"
+
+    @player.name = gets.chomp
+
+    puts "#{@player.name} your piece is(#{@player.player})!"
+
     result = ''
 
     puts "\n\nTIC TAC TOE"
@@ -34,7 +41,9 @@ class Main
 
     until done
 
-      puts "\nInsert Position"
+
+
+      puts "\n#{@player.name}, please insert Position"
 
       number = gets.chomp.to_i
 

@@ -5,10 +5,14 @@ require './lib/movable.rb'
 # Ruby program to find the
 # next optimal move for a player
 class Player
-  def initialize(player = 'o', opponent = 'x')
+  def initialize(name = 'Unknown player', player = 'o', opponent = 'x')
+    @name =name
     @player = player
     @opponent = opponent
   end
+
+  attr_accessor :name
+  attr_accessor :player, :opponent
 
   # This will return the best possible
   # move for the player
@@ -47,7 +51,6 @@ class Player
 
   include Movable
   include Evaluatable
-  attr_accessor :player, :opponent
 
   # This method return max between 2 numbers
   def max(a, b)
