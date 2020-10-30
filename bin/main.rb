@@ -1,3 +1,4 @@
+# rubocop:disable all
 require './lib/board.rb'
 require './lib/movable.rb'
 

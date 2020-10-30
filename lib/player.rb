@@ -1,3 +1,4 @@
+# rubocop:disable all
 require './lib/evaluatable.rb'
 require './lib/movable.rb'
 

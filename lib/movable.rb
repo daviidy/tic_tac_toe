@@ -1,3 +1,4 @@
+# rubocop:disable all
 module Movable
   # This function take a board and check
 

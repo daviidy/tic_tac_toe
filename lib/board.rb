@@ -1,3 +1,4 @@
+# rubocop:disable all
 require './lib/movable.rb'
 
 require './lib/evaluatable.rb'
@@ -68,7 +69,7 @@ class Board
       return false
     end
   end
-  
+
   def add_piece(converter, number)
     board[converter[number][0]][converter[number][1]] = 'x'
 
