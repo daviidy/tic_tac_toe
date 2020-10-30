@@ -40,8 +40,6 @@ class Main
 
       while number < 1 || number > 9
         puts 'Invalid entry please try between 1-9'
-        puts converter
-        puts game
         number = gets.chomp.to_i
       end
 
