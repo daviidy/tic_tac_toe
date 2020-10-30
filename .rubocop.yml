@@ -10,13 +10,15 @@ Layout/LineLength:
 Metrics/MethodLength:
   Max: 100
 Metrics/AbcSize:
-  IgnoredMethods: ["play", "display", "evaluate"]
+  IgnoredMethods: ["play", "display", "evaluate", "minimax"]
 Metrics/ClassLength:
   Max: 150
+Naming/MethodParameterName:
+  MinNameLength: 1
 Metrics/CyclomaticComplexity:
-  IgnoredMethods: ["play"]
+  IgnoredMethods: ["play", "minimax"]
 Metrics/PerceivedComplexity:
- IgnoredMethods: ["play"]
+ IgnoredMethods: ["play", "minimax"]
 Metrics/BlockLength:
   ExcludedMethods: ['describe']
   Max: 30

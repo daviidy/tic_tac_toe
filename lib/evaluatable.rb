@@ -1,3 +1,4 @@
+# rubocop:disable all
 module Evaluatable
   # This function take 3 args and check
 

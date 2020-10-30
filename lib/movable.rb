@@ -1,3 +1,4 @@
+# rubocop:disable all
 module Movable
   # This function take a board and check
 
@@ -8,7 +9,7 @@ module Movable
   def move?(board)
     3.times do |row|
       3.times do |col|
-        return true if board[row][col] == '_'
+        return true if board[row][col] != 'o' || board[row][col] != 'x' 
       end
     end
 

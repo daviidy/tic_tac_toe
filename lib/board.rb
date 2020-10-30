@@ -1,6 +1,8 @@
+# rubocop:disable all
 require './lib/movable.rb'
 
 require './lib/evaluatable.rb'
+require './lib/player.rb'
 
 class Board
   include Movable
@@ -8,13 +10,14 @@ class Board
   include Evaluatable
 
   def initialize
+    @player = Player.new
     @board = [
 
-      %w[_ _ _],
+      %w[7 8 9],
 
-      %w[_ _ _],
+      %w[4 5 6],
 
-      %w[_ _ _]
+      %w[1 2 3]
 
     ]
 
@@ -46,106 +49,33 @@ class Board
   attr_reader :player, :converter
 
   def display
-    puts " #{board[0][0]} | #{board[0][1]} | #{board[0][2]}"
+    string_1 = " #{board[0][0]} | #{board[0][1]} | #{board[0][2]}"
 
-    puts '-----------'
+    string_2 = '-----------'
 
-    puts " #{board[1][0]} | #{board[1][1]} | #{board[1][2]}"
+    string_3 = " #{board[1][0]} | #{board[1][1]} | #{board[1][2]}"
 
-    puts '-----------'
+    string_4 = '-----------'
 
-    puts " #{board[2][0]} | #{board[2][1]} | #{board[2][2]}"
+    string_5 = " #{board[2][0]} | #{board[2][1]} | #{board[2][2]}"
+
+    playground = "#{string_1}\n#{string_2}\n#{string_3}\n#{string_4}\n#{string_5}"
   end
 
-  def play
-    result = ''
+  def is_occupied(converter, number)
+    if board[converter[number][0]][converter[number][1]] == 'o' ||
+       board[converter[number][0]][converter[number][1]] == 'x'
 
-    puts "\n\nTIC TAC TIE"
-
-    display
-
-    done = false
-
-    until done
-
-      puts "\n X Turn"
-
-      number = gets.chomp.to_i
-
-      if board[converter[number][0]][converter[number][1]] == 'o' ||
-         board[converter[number][0]][converter[number][1]] == 'x'
-
-        puts 'This Position is Occupied Choice another one'
-        number = gets.chomp.to_i
-      end
-
-      board[converter[number][0]][converter[number][1]] = 'x'
-      evaluated = evaluate(board)
-
-      display
-
-      evaluated = evaluate(board)
-
-      move = move?(board)
-
-      if evaluated == 10
-
-        done = true
-        result = 'O win'
-        break
-
-      end
-
-      if evaluated == -10
-
-        done = true
-
-        result = 'X win'
-        break
-      end
-
-      puts "\n O Turn"
-
-      number_two = gets.chomp.to_i
-
-      if board[converter[number][0]][converter[number][1]] == 'o' ||
-         board[converter[number][0]][converter[number][1]] == 'x'
-
-        puts 'This Position is Occupied Choice another one'
-        number_two = gets.chomp.to_i
-      end
-
-      board[converter[number_two][0]][converter[number_two][1]] = 'o'
-
-      display
-
-      evaluated = evaluate(board)
-
-      move = move?(board)
-
-      if evaluated == 10
-
-        done = true
-        result = 'O win'
-
-      end
-
-      if evaluated == -10
-
-        done = true
-
-        result = 'X win'
-
-      end
-
-      next unless evaluated.zero? && !move
-
-      done = true
-
-      result = 'draw'
-
+      return false
     end
-
-    puts result
   end
+
+  def add_piece(converter, number)
+    board[converter[number][0]][converter[number][1]] = 'o'
+
+    player_move = player.find_best_move(board)
+
+    board[player_move[:row]][player_move[:col]] = 'x'
+  end
+
 end
