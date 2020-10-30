@@ -25,13 +25,17 @@ consecutive positions (o or X) wins. If all the positions are filled and we don'
 
 1- Enter your name to start
 
-`λ .\bin\main.rb
+```
+λ .\bin\main.rb
 Unknown player what's your name?
 dave
-`
+
+```
 2 - After you can start playing, by inserting your position (any number between 1 and 9)
 
-`dave your piece is(o)!
+```
+
+dave your piece is(o)!
 
 
 TIC TAC TOE
@@ -42,14 +46,19 @@ TIC TAC TOE
  _ | _ | _
 
 dave, please insert Position
-`
+
+```
+
 Here are all the positions
 
-`7 | 8 | 9
------------
- 4 | 5 | 6
------------
- 1 | 2 | 3`
+```
+7 | 8 | 9
+---------
+4 | 5 | 6
+---------
+1 | 2 | 3
+
+```
 
 ## Live Demo
 [Click this link to play]()
