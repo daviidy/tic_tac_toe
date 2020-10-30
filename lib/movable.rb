@@ -9,7 +9,7 @@ module Movable
   def move?(board)
     3.times do |row|
       3.times do |col|
-        return true if board[row][col] != 'o' || board[row][col] != 'x' 
+        return true if board[row][col] == '_' 
       end
     end
 
