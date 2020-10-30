@@ -13,11 +13,11 @@ class Board
     @player = Player.new
     @board = [
 
-      %w[7 8 9],
+      %w[_ _ _],
 
-      %w[4 5 6],
+      %w[_ _ _],
 
-      %w[1 2 3]
+      %w[_ _ _]
 
     ]
 
