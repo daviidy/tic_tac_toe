@@ -71,11 +71,11 @@ class Board
   end
 
   def add_piece(converter, number)
-    board[converter[number][0]][converter[number][1]] = 'x'
+    board[converter[number][0]][converter[number][1]] = 'o'
 
     player_move = player.find_best_move(board)
 
-    board[player_move[:row]][player_move[:col]] = 'o'
+    board[player_move[:row]][player_move[:col]] = 'x'
   end
 
 end

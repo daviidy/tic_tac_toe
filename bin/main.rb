@@ -12,9 +12,7 @@ class Main
 
   def initialize
     @board = Board.new
-    @game = @board.board
     @player = Player.new
-    @converter = @board.converter
   end
 
   def play
@@ -23,7 +21,7 @@ class Main
 
     @player.name = gets.chomp
 
-    puts "#{@player.name} your piece is(#{@player.opponent})!"
+    puts "#{@player.name} your piece is(#{@player.player})!"
 
     result = ''
 
