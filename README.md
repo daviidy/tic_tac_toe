@@ -61,7 +61,7 @@ Here are all the positions
 ```
 
 ## Live Demo
-[Click this link to play](https://repl.it/@daviidy/tictactoe)
+[Click this link to play](https://repl.it/@daviidy/tictactoe-1)
 
 ## Author
 
