@@ -65,9 +65,9 @@ class Board
   def is_occupied(converter, number)
     if board[converter[number][0]][converter[number][1]] == 'o' ||
        board[converter[number][0]][converter[number][1]] == 'x'
-
       return false
     end
+    true
   end
 
   def add_piece(converter, number)

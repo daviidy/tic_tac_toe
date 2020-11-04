@@ -32,18 +32,12 @@ class Main
     done = false
 
     until done
-
-
-
       puts "\n#{@player.name}, please insert Position"
-
       number = gets.chomp.to_i
-
       while number < 1 || number > 9
         puts 'Invalid entry please try between 1-9'
         number = gets.chomp.to_i
       end
-
       loop do
         if @board.is_occupied(@board.converter, number) == false
           puts 'This Position is occupied! Please choose another one'
@@ -57,39 +51,25 @@ class Main
           break
         end
       end
-
       puts @board.display
-
+      # evaluate the move
       evaluated = evaluate(@board.board)
-
+      # check if another move is possible
       move = move?(@board.board)
-
       if evaluated == 10
-
         done = true
-
         result = 'O win'
-
       end
-
       if evaluated == -10
-
         done = true
-
         result = 'X win'
-
       end
-
       next unless evaluated.zero? && !move
-
       done = true
-
       result = 'draw'
-
     end
-
     puts result
   end
 end
-main = Main.new
-main.play
+# main = Main.new
+# main.play
