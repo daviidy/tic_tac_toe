@@ -1,3 +1,4 @@
+# rubocop:disable all
 require './lib/board.rb'
 require './lib/movable.rb'
 
@@ -65,4 +66,3 @@ class Main
 end
 # main = Main.new
 # main.play
-# rubocop:disable all

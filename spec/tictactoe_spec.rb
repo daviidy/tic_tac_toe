@@ -1,10 +1,7 @@
-require 'simplecov'
-SimpleCov.start
-
-require '../bin/main.rb'
-require '../lib/player.rb'
-require '../lib/board.rb'
-require '../lib/evaluatable.rb'
+require_relative '../bin/main.rb'
+require_relative '../lib/player.rb'
+require_relative '../lib/board.rb'
+require_relative '../lib/evaluatable.rb'
 
 describe 'Tic Tac Toe' do
   describe Board do
