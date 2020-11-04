@@ -1,4 +1,3 @@
-# rubocop:disable all
 require './lib/board.rb'
 require './lib/movable.rb'
 
@@ -7,7 +6,6 @@ require './lib/player.rb'
 
 class Main
   include Movable
-
   include Evaluatable
 
   def initialize
@@ -16,19 +14,12 @@ class Main
   end
 
   def play
-
     puts "#{@player.name} what's your name?"
-
     @player.name = gets.chomp
-
     puts "#{@player.name} your piece is(#{@player.player})!"
-
     result = ''
-
     puts "\n\nTIC TAC TOE"
-
     puts @board.display
-
     done = false
 
     until done
@@ -65,6 +56,7 @@ class Main
         result = 'X win'
       end
       next unless evaluated.zero? && !move
+
       done = true
       result = 'draw'
     end
@@ -73,3 +65,4 @@ class Main
 end
 # main = Main.new
 # main.play
+# rubocop:disable all

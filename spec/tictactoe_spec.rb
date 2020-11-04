@@ -4,6 +4,7 @@ SimpleCov.start
 require '../bin/main.rb'
 require '../lib/player.rb'
 require '../lib/board.rb'
+require '../lib/evaluatable.rb'
 
 describe 'Tic Tac Toe' do
   describe Board do
@@ -36,10 +37,37 @@ describe 'Tic Tac Toe' do
         expect(board.is_occupied(board.converter, 2)).to eql(false)
       end
     end
-    # describe '#is_occupied' do
-    #   it 'returns true when position is valid' do
-    #     expect(board.is_occupied(board.converter, 5)).to eql(true)
-    #   end
-    # end
+  end
+
+  describe Evaluatable do
+    let(:board) { Board.new }
+    let(:player) { Player.new('dave') }
+    # let(:main) { Main.new }
+
+    describe '#evaluate' do
+      include Evaluatable
+      include Movable
+      it 'Should return -10 if player X wins' do
+        board.add_piece(board.converter, 1)
+        board.add_piece(board.converter, 2)
+        board.add_piece(board.converter, 4)
+        expect(evaluate(board.board)).to eql(-10)
+      end
+      board = Board.new
+      it 'Should return 10 if player O wins' do
+        board.add_piece(board.converter, 5)
+        board.add_piece(board.converter, 1)
+        board.add_piece(board.converter, 9)
+        expect(evaluate(board.board)).to eql(10)
+      end
+      board = Board.new
+      it 'Should return false if there is no other move left(Game ended in draw)' do
+        board.add_piece(board.converter, 1)
+        board.add_piece(board.converter, 8)
+        board.add_piece(board.converter, 3)
+        board.add_piece(board.converter, 6)
+        expect(move?(board.board)).to eql(false)
+      end
+    end
   end
 end
